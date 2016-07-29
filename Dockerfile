@@ -10,7 +10,7 @@ RUN apt-get update && \
   wget -q -O - https://deb.nodesource.com/setup | sudo bash - && \
   apt-get install -y git build-essential nodejs && \
   rm -rf /var/lib/apt/lists/* && \
-  git clone --depth=1 https://github.com/nhoag/bot.git ${BOTDIR}
+  git clone --depth=1 https://github.com/awesinine/helper.git ${BOTDIR}
 
 WORKDIR ${BOTDIR}
 
