@@ -14,4 +14,6 @@ RUN apt-get update && \
 
 WORKDIR ${BOTDIR}
 
-RUN npm install
+RUN \ 
+  npm install \
+  twit
