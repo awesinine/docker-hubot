@@ -1,19 +1,26 @@
-# DOCKER-VERSION  1.3.2
-
-FROM ubuntu:14.04
-MAINTAINER Awesinine
+FROM node:7-alpine
+LABEL maintainer "awesinine"
 
 ENV BOTDIR /opt/bot
 
-RUN apt-get update && \
-  apt-get install -y wget && \
-  wget -q -O - https://deb.nodesource.com/setup | sudo bash - && \
-  apt-get install -y git build-essential nodejs && \
-  rm -rf /var/lib/apt/lists/* && \
-  git clone --depth=1 https://github.com/awesinine/helper.git ${BOTDIR}
+# Install Hubot generator
+RUN \
+  apk add --no-cache jq && \
+  npm install -g --production --silent coffee-script generator-hubot yo && \
+  mkdir /hubot && chown node:node /hubot
 
 WORKDIR ${BOTDIR}
 
-RUN \ 
-  npm install \
-  twit
+USER node
+
+RUN \
+  yo --no-insight hubot --name=hubot-container --defaults && \
+  rm -f hubot-scripts.json && \
+  sed -i '/npm install/d' bin/hubot && \
+  npm install --save --production --silent \
+    hubot-slack \
+    hubot-auth \
+    hubot-env \
+    twit
+
+ENTRYPOINT ["./bin/hubot"]
