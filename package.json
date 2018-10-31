@@ -1,5 +1,5 @@
 {
-  "name": "Hubot-Alpine",
+  "name": "Docker-Hubot",
   "version": "1.0.0",
   "description": "Hubot in Docker",
   "main": "index.js",
