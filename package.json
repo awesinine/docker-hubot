@@ -1,0 +1,32 @@
+{
+  "name": "Hubot-Alpine",
+  "version": "1.0.0",
+  "description": "Hubot in Docker",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:awesinine/docker-hubot.git"
+  },
+  "author": "Awesinine",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/awesinine/docker-hubot/issues"
+  },
+  "homepage": "https://github.com/awesinine/docker-hubot#readme",
+  "dependencies": {
+    "hubot": "latest",
+    "hubot-diagnostics": "0.0.1",
+    "hubot-help": "^0.1.2",
+    "hubot-redis-brain": "0.0.3",
+    "hubot-schedule": "^0.4.0",
+    "hubot-scripts": "^2.16.2",
+    "hubot-slack": "^4.4.0",
+    "cron": "latest",
+    "hubot-dockerhub-integration": "latest",
+    "hubot-formatted-crypto": "latest",
+    "hubot-whois": "latest"
+  }
+}
