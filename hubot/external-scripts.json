@@ -5,7 +5,6 @@
   "hubot-uptime",
   "hubot-cron",
   "hubot-cryptoalert",
-  "hubot-dockerhub-integration",
   "hubot-formatted-crypto",
   "hubot-whois"
 ]
