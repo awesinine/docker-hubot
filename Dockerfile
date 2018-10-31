@@ -7,10 +7,6 @@ RUN apk update && apk upgrade \
   && apk add npm \
   && npm install -g npm \
   && npm install -g yo generator-hubot \
-  && npm install hubot-redis-brain --save \
-  && npm install hubot-uptime \
-  && npm install hubot-cron \
-  && npm install hubot-cryptoalert \
   && npm install twit \
   && npm install hubot-slack \
   && rm -rf /var/cache/apk/*

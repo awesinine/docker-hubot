@@ -20,11 +20,7 @@
     "hubot": "latest",
     "hubot-diagnostics": "latest",
     "hubot-help": "latest",
-    "hubot-redis-brain": "latest",
     "hubot-scripts": "latest",
     "hubot-slack": "latest",
-    "cron": "latest",
-    "hubot-formatted-crypto": "latest",
-    "hubot-whois": "latest"
   }
 }
