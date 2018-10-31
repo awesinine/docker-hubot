@@ -21,11 +21,9 @@
     "hubot-diagnostics": "latest",
     "hubot-help": "latest",
     "hubot-redis-brain": "latest",
-    "hubot-schedule": "latest",
     "hubot-scripts": "latest",
     "hubot-slack": "latest",
     "cron": "latest",
-    "hubot-dockerhub-integration": "latest",
     "hubot-formatted-crypto": "latest",
     "hubot-whois": "latest"
   }
