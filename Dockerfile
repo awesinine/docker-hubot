@@ -1,24 +1,32 @@
-FROM node:7-alpine
-LABEL maintainer "awesinine"
+FROM alpine
+MAINTAINER awesinine
 
-# Install Hubot generator
-RUN \
-  apk add --no-cache jq && \
-  npm install -g --production --silent coffee-script generator-hubot yo && \
-  mkdir /hubot && chown node:node /hubot
+RUN apk update && apk upgrade \
+  && apk add redis \
+  && apk add nodejs \
+  && apk add npm \
+  && npm install -g npm \
+  && npm install -g yo generator-hubot \
+  && npm install hubot-uptime \
+  && npm install hubot-cron \
+  && npm install hubot-cryptoalert \
+  && npm install twit \
+  && npm install hubot-slack \
+  && rm -rf /var/cache/apk/*
 
+# Create hubot user
+RUN adduser -h /hubot -s /bin/bash -S hubot
+USER  hubot
 WORKDIR /hubot
 
-USER node
+# Install hubot
+RUN yo hubot --owner="Awesinine" --name="sirbotsalot" --description=":poop:" --defaults
+COPY package.json package.json
+COPY scripts scripts
+RUN npm install
+ADD hubot/external-scripts.json /hubot/
 
-RUN \
-  yo --no-insight hubot --name=hubot-container --defaults && \
-  rm -f hubot-scripts.json && \
-  sed -i '/npm install/d' bin/hubot && \
-  npm install --save --production --silent \
-    hubot-slack \
-    hubot-auth \
-    hubot-env \
-    twit
+EXPOSE 8080
 
-ENTRYPOINT ["./bin/hubot"]
+# And go
+CMD ["/bin/sh", "-c", "bin/hubot --adapter slack"]
