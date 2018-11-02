@@ -1,4 +1,4 @@
-FROM alpine
+FROM ubuntu:16.04
 MAINTAINER awesinine
 
 RUN apk update && apk upgrade \
