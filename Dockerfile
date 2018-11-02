@@ -8,6 +8,7 @@ RUN apk update && apk upgrade \
   && npm install -g npm \
   && npm install -g yo generator-hubot \
   && npm install twit \
+  && npm install hubot-redis-brain --save \
   && npm install hubot-slack \
   && rm -rf /var/cache/apk/*
 
