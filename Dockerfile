@@ -5,6 +5,7 @@ RUN apk update && apk upgrade \
   && apk add redis \
   && apk add nodejs \
   && apk add npm \
+  && npm install -g npm-install-peers \
   && npm install -g npm \
   && npm install -g yo generator-hubot \
   && npm install twit \

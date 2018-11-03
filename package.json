@@ -21,6 +21,7 @@
     "hubot-diagnostics": "latest",
     "hubot-help": "latest",
     "hubot-scripts": "latest",
+    "hubot-redis-brain": "latest",
     "hubot-slack": "latest"
   }
 }
