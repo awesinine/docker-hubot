@@ -16,6 +16,7 @@ RUN apt-get update \
       libssl-dev \
       libffi-dev \
       python3-dev \
+      twitter \
  && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt ./requirements.txt
