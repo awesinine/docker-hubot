@@ -1,31 +1,28 @@
-FROM alpine
-MAINTAINER awesinine
+FROM python:3.6.4-slim
 
-RUN apk update && apk upgrade \
-  && apk add redis \
-  && apk add nodejs \
-  && apk add npm \
-  && npm install -g npm-install-peers \
-  && npm install -g npm \
-  && npm install -g yo generator-hubot \
-  && npm install twit \
-  && npm install hubot-redis-brain --save \
-  && npm install hubot-slack \
-  && rm -rf /var/cache/apk/*
+MAINTAINER Awesinine
 
-# Create hubot user
-RUN adduser -h /hubot -s /bin/bash -S hubot
-USER  hubot
-WORKDIR /hubot
+ENV ERRBOT_DIR=/errbot
 
-# Install hubot
-RUN yo hubot --owner="Awesinine" --name="sirbotsalot" --description=":poop:" --defaults
-COPY package.json package.json
-COPY scripts scripts
-RUN npm install
-ADD hubot/external-scripts.json /hubot/
+RUN mkdir -p $ERRBOT_DIR
 
-EXPOSE 8080
+WORKDIR $ERRBOT_DIR
 
-# And go
-CMD ["/bin/sh", "-c", "bin/hubot --adapter slack"]
+VOLUME ["/errbot/data", "/errbot/plugins"]
+
+RUN apt-get update \
+ && apt-get install -y \
+      git \
+      libssl-dev \
+      libffi-dev \
+      python3-dev \
+ && rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt ./requirements.txt
+
+RUN pip install \
+      --no-cache-dir \
+      --disable-pip-version-check \
+      -r requirements.txt
+
+CMD ["errbot"]
