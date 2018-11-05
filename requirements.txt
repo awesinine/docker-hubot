@@ -2,3 +2,4 @@ errbot
 slackclient
 python-twitter
 redis
+jsonpickle
