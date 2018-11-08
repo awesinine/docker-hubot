@@ -3,3 +3,7 @@ slackclient
 python-twitter
 redis
 jsonpickle
+feedparser
+lxml
+requests
+beautifulsoup4
