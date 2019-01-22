@@ -9,3 +9,4 @@ requests
 beautifulsoup4
 alpha_vantage
 pandas
+matplotlib
